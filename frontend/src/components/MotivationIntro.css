@@ -1,0 +1,109 @@
+/* MotivationIntro.css (FIXED AND FULLY RESPONSIVE) */
+
+/* ==================================== */
+/* 0. Reset & Global Setup */
+/* ==================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden; 
+    max-width: 100%; 
+    margin: 0;
+}
+
+/* ==================================== */
+/* 1. Main Section/Card Styles */
+/* ==================================== */
+section {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    /* Base Height for Desktop */
+    height: 80vh; 
+    display: flex;
+    align-items: center; /* Vertically center the quote */
+    /* The background image and gradients are handled by the inline style in JSX */
+}
+
+/* We removed the generic 'img' styles which were causing the invisible overlay */
+
+
+/* ==================================== */
+/* 2. Quote Styling (Text Content) */
+/* ==================================== */
+.quote {
+    /* 🔥 FIX: Ensure the quote is visible and on top of the background image */
+    z-index: 50; 
+    
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400; /* Slightly heavier for better legibility */
+    color: rgba(255, 255, 255, 0.579); /* High opacity white */
+    
+    /* Standard Desktop Settings */
+    max-width: 34%; 
+    margin: 0 2rem;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    
+    /* Ensure text wrapping */
+    white-space: normal;
+    word-wrap: break-word;
+    
+    /* Add subtle shadow for contrast against image details */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Positioning based on the 'direction' prop */
+.left {
+    justify-content: flex-start; /* Quote aligns left */
+}
+.right {
+    justify-content: flex-end; /* Quote aligns right */
+}
+
+/* ==================================== */
+/* 3. Responsiveness */
+/* ==================================== */
+
+/* Tablet & Smaller Desktop Screens (768px to 1200px) */
+@media (min-width: 768px) and (max-width: 1200px) {
+    section {
+        height: 70vh; /* Reduced height */
+    }
+    .quote {
+        max-width: 40%; /* Quote can take up slightly more space */
+        font-size: 2rem; /* Medium-sized font */
+        margin: 0 1.5rem;
+    }
+}
+
+/* Mobile Screens (Max Width 767px) */
+@media (max-width: 767px) {
+    section {
+        height: 50vh; /* Significantly reduced height for mobile */
+    }
+    .quote {
+        /* Quote takes up significantly more width on small screens */
+        max-width: 80%; 
+        font-size: 1.5rem; /* Smaller, legible font */
+        margin: 0 1rem;
+        text-align: center; /* Center text for better flow on small screens */
+    }
+    
+    /* 🔥 IMPROVEMENT: Center content on mobile regardless of 'direction' class */
+    .left, .right {
+        justify-content: center; 
+    }
+}
+
+/* Very Small Mobile Screens (Max Width 480px) */
+@media (max-width: 480px) {
+    .quote {
+        font-size: 1.2rem;
+        max-width: 90%;
+    }
+}

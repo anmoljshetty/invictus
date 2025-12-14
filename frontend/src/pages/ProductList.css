@@ -1,0 +1,281 @@
+/* ==================================== */
+/* 0. Imports & Global Setup */
+/* ==================================== */
+
+:root {
+    /* Define colors based on Home.css */
+    --color-primary-bg: #0a0a0a;             /* Deep Charcoal */
+    --color-card-bg: #1c1c1c;                /* Card Background */
+    --color-text-light: #e8e8e8;             /* Soft White Text */
+    --color-accent-yellow: rgba(249, 219, 51, 0.873); /* Primary Action Color */
+    --color-accent-slate: #82a4c1;           /* Title/Highlight Color */
+    --color-border-dark: #333;               /* Subtle Border */
+    --color-subtle-text: #a0a0a0;            /* Category/Stock Text */
+    --shadow-hover-yellow: 0 0 10px rgba(249, 219, 51, 0.4); /* Button Hover Glow */
+    --shadow-card-inner: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Subtle inner shadow */
+}
+
+/* Ensure global box-sizing consistency */
+* {
+    box-sizing: border-box;
+    /* Font imported via @import in the actual file */
+    font-family: "Inter", sans-serif; 
+}
+
+/* ==================================== */
+/* 1. Container & Main Header (UPDATED) */
+/* ==================================== */
+
+.product-list-container {
+    background-color: var(--color-primary-bg); 
+    color: var(--color-text-light); 
+    min-height: 100vh;
+    padding: 30px 5%;
+    /* 🛑 IMPORTANT: Set position relative for absolute positioning of the button */
+    position: relative; 
+}
+
+/* Container for Title and My Orders button (Now serves as a full-width wrapper) */
+.product-list-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px; 
+    /* The button will be positioned absolute relative to .product-list-container */
+}
+
+.product-list-container h1 {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.693);
+    border-bottom: 8px solid yellow;
+    border-bottom-style: dashed;
+    border-bottom-width: thick;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem); 
+    margin-bottom: 5px; 
+    padding-bottom: 10px;
+    text-shadow: 0 0 10px rgba(130, 164, 193, 0.2);
+    font-weight: 400;
+}
+
+/* Style for the new 'My Orders' button (POSITIONING CHANGED) */
+.view-orders-btn {
+    /* Reposition the button to the top right of the container */
+    position: absolute;
+    top: 30px; /* Aligned with top padding */
+    right: 5%; /* Aligned with right padding */
+/* Soft Blue/Slate */
+    color: var(--color-accent-yellow);
+    background-color: #ffffff00;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: "Lexend", sans-serif;
+    font-size: 0.9em;
+    margin-top: 0; /* Removed margin-top as it's now positioned absolutely */
+    transition: all 0.1s ease-in-out;
+    z-index: 10; /* Ensure it's above other elements if necessary */
+}
+
+.view-orders-btn:hover {
+    border-bottom: 4px solid var(--color-accent-yellow);
+}
+
+/* Loading and Empty State Messages */
+.product-list-message {
+    text-align: center;
+    font-size: 1.5em;
+    color: var(--color-subtle-text);
+    padding: 100px 0;
+}
+
+/* ==================================== */
+/* 2. Product Grid Layout (LIST VIEW) */
+/* ==================================== */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); 
+    gap: 20px; 
+    max-width: 1400px; 
+    margin: 0 auto;
+}
+
+
+/* ==================================== */
+/* 3. Product Card Styling */
+/* ==================================== */
+
+.product-card {
+    background-color: var(--color-card-bg); 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7), var(--shadow-card-inner); 
+    border: 1px solid var(--color-border-dark);
+    
+    display: flex;
+    flex-direction: row; 
+    align-items: stretch;
+    overflow: hidden; 
+    padding: 0;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), var(--shadow-hover-yellow); 
+    border-color: var(--color-accent-yellow); 
+}
+
+.product-image {
+    flex-shrink: 0;
+    width: 250px; 
+    height: 180px; 
+    
+    object-fit: cover; 
+    border-radius: 10px 0 0 10px; 
+    margin-bottom: 0; 
+    
+    transition: filter 0.3s;
+}
+
+.product-card:hover .product-image {
+    filter: brightness(1.15); 
+}
+
+/* Wrapper for the content and button */
+.product-details {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1; 
+    padding: 20px 30px; 
+}
+
+/* Wrapper for Name, Price, Category, Stock */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    justify-content: center; 
+}
+
+
+.product-name {
+    font-size: 1.8rem; 
+    color: var(--color-accent-slate); 
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    text-shadow: 0 0 5px rgba(130, 164, 193, 0.3);
+}
+
+.product-price {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.3em; 
+    font-weight: 700;
+    color: var(--color-accent-yellow); 
+    margin: 5px 0 10px 0;
+    text-shadow: 0 0 8px rgba(249, 219, 51, 0.5);
+}
+
+.product-category, .product-stock {
+    font-family: "Momo Trust Display", sans-serif;
+    font-size: small;
+    color: var(--color-subtle-text);
+    margin-bottom: 2px;
+}
+
+/* ==================================== */
+/* 4. Button Styling (Buy Now) */
+/* ==================================== */
+
+.buy-btn { 
+    margin-top: 0;
+    margin-left: 30px; 
+    padding: 15px 25px;
+    background-color: var(--color-accent-yellow); 
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Lexend", sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    width: auto; 
+    flex-shrink: 0; 
+}
+
+.buy-btn:hover:not(:disabled) { 
+    background-color: #00000000; 
+    border-bottom: 4px solid var(--color-accent-yellow);
+    border-top: 4px solid var(--color-accent-yellow);
+    color: rgb(62, 244, 62); 
+    transform: scale(1.05); 
+}
+
+.buy-btn:disabled { 
+    background-color: #333;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ==================================== */
+/* 5. Responsiveness (Mobile Card Switch) */
+/* ==================================== */
+
+/* Mobile and Tablet Layout Switch (Max width 768px) */
+@media (max-width: 768px) {
+    /* Adjust button position for smaller screens */
+    .view-orders-btn {
+        position: static; /* Let it flow normally */
+        margin-top: 20px; 
+        width: 80%; /* Make it wider on mobile */
+    }
+
+    .product-list-header {
+        margin-bottom: 30px;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .product-card {
+        flex-direction: column; 
+        align-items: center;
+        padding: 0;
+        transform: none; 
+    }
+    
+    .product-image {
+        width: 100%;
+        height: 250px; 
+        border-radius: 10px 10px 0 0; 
+    }
+
+    .product-details {
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        align-items: flex-start;
+    }
+
+    .product-info {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .buy-btn { 
+        width: 100%; 
+        margin-left: 0;
+        padding: 12px;
+        font-size: 1.1em;
+    }
+}

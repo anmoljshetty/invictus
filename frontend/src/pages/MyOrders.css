@@ -1,0 +1,118 @@
+/* pages/MyOrders.css */
+
+/* Use the same theme variables for consistency */
+:root {
+    --color-primary-bg: #0a0a0a;
+    --color-card-bg: #1c1c1c;
+    --color-text-light: #e8e8e8;
+    --color-accent-yellow: rgba(249, 219, 51, 0.873);
+    --color-accent-slate: #82a4c1;
+    --color-success: #4caf50; /* Green for Completed */
+    --color-pending: #ffc107; /* Yellow for Pending */
+}
+
+.orders-container {
+    background-color: var(--color-primary-bg); 
+    color: var(--color-text-light); 
+    min-height: 100vh;
+    padding: 30px 5%;
+}
+
+.orders-title {
+    text-align: center;
+    color: var(--color-accent-slate);
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); 
+    margin-bottom: 40px;
+    font-weight: 300;
+    text-shadow: 0 0 10px rgba(130, 164, 193, 0.3);
+}
+
+.orders-message {
+    text-align: center;
+    font-size: 1.5em;
+    color: var(--color-accent-slate);
+    padding: 50px 0;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.order-card {
+    background-color: var(--color-card-bg); 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed var(--color-border-dark);
+}
+
+.order-id {
+    font-size: 0.9em;
+    color: var(--color-subtle-text);
+}
+
+.order-status {
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.status-Completed {
+    background-color: var(--color-success);
+    color: #1c1c1c;
+}
+
+.status-Pending {
+    background-color: var(--color-pending);
+    color: #1c1c1c;
+}
+
+.order-name {
+    font-size: 1.2em;
+    color: var(--color-accent-yellow);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.order-price {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: var(--color-text-light);
+    margin-bottom: 5px;
+}
+
+.order-date {
+    font-size: 0.85em;
+    color: var(--color-subtle-text);
+}
+
+/* Responsive adjustment */
+@media (max-width: 600px) {
+    .orders-title {
+        font-size: 2.5rem;
+    }
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

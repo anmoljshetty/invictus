@@ -1,0 +1,114 @@
+/* CheckoutPage.css */
+
+/* Reuse theme variables for consistency */
+:root {
+    --color-primary-bg: #0a0a0a;             /* Deep Charcoal */
+    --color-card-bg: #1c1c1c;                /* Card Background */
+    --color-text-light: #e8e8e8;             /* Soft White Text */
+    --color-accent-yellow: rgba(249, 219, 51, 0.873); /* Primary Action Color */
+    --color-accent-slate: #82a4c1;           /* Title/Highlight Color */
+    --color-border-dark: #333;               /* Subtle Border */
+    --shadow-hover-yellow: 0 0 10px rgba(249, 219, 51, 0.4); 
+}
+
+/* 1. Page Container */
+.checkout-container {
+    background-color: var(--color-primary-bg);
+    min-height: 100vh;
+    padding: 50px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-text-light);
+}
+
+.checkout-title {
+    color: var(--color-accent-slate);
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem); 
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(130, 164, 193, 0.2);
+    font-weight: 400;
+}
+
+/* Loading and Error Messages */
+.checkout-loading, .checkout-error {
+    font-size: 1.5em;
+    color: var(--color-accent-slate);
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* 2. Payment Form Card Wrapper */
+.payment-form-card {
+    background-color: var(--color-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid var(--color-border-dark);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 3. Text and Details Styling */
+
+.payment-title {
+    font-size: 1.8rem;
+    color: var(--color-accent-yellow);
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.payment-amount {
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+}
+
+/* Style for the Stripe Payment Element container */
+/* Note: Fine-grained styling of the internal Stripe component is limited, 
+   but the night theme helps match the dark aesthetic. */
+.stripe-payment-element {
+    padding: 10px 0;
+}
+
+/* 4. Submit Button Styling */
+
+.submit-payment-btn {
+    padding: 15px 25px;
+    background-color: var(--color-accent-yellow); 
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Lexend", sans-serif;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: all 0.2s ease; 
+}
+
+.submit-payment-btn:hover:not(:disabled) {
+    background-color: rgb(105, 228, 105); /* Change color on hover */
+    color: var(--color-primary-bg);
+    box-shadow: 0 0 8px rgb(73, 236, 73);
+}
+
+.submit-payment-btn:disabled {
+    background-color: #333;
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 600px) {
+    .checkout-container {
+        padding: 30px 3%;
+    }
+    .payment-form-card {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,383 @@
+/* ==================================== */
+/* 0. Imports & Global Reset */
+/* ==================================== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Lexend:wght@400;700&family=Oswald:wght@400;700&display=swap");
+/* Note: Science Gothic is not on Google Fonts by default, assume you have it locally or via Adobe */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Crucial: Prevents padding from adding to width */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  overflow-x: hidden; /* Strict overflow control */
+  font-family: "Inter", sans-serif;
+  width: 100%;
+}
+
+.home-container {
+  background-color: #0a0a0a;
+  color: #e8e8e8;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ==================================== */
+/* 2. Navbar Styling */
+/* ==================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: #1c1c1c;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  z-index: 100;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.mainLogo {
+  font-family: "Science Gothic", sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Responsive Font Size */
+  margin-left: 10px;
+}
+
+.logout-btn {
+  background-color: rgba(249, 219, 51, 0.873);
+  font-family: "Lexend", sans-serif;
+  color: #121212;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+  background-color: rgba(0, 0, 0, 0.873);
+  box-shadow: 0 0 10px rgba(249, 219, 51, 0.873);
+  color: rgba(249, 219, 51, 0.873);
+  transform: scale(1.05);
+}
+
+/* ==================================== */
+/* 3. Welcome Section & Buildup (FIXED) */
+/* ==================================== */
+.welcome-section {
+  width: 100%;
+  height: max-content;
+  padding: 40px 5%; /* Standard padding */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-title {
+  color: #82a4c1;
+  margin-bottom: 20px;
+  /* FLUID TYPOGRAPHY: Scales between 1.8rem and 3.5rem based on screen width */
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  width: 100%;
+  overflow-wrap: break-word; /* Prevents overflow */
+}
+
+.buildup-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px; /* Internal safety padding */
+}
+
+.buildup {
+  /* FLUID TYPOGRAPHY: Scales between 0.9rem and 1.1rem */
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  line-height: 1.6;
+  color: #a0a0a0;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* ==================================== */
+/* 3.5. Logo Carousel Styling */
+/* ==================================== */
+.logo-carousel-container {
+  background-color: #000000;
+  height: 120px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.logo-carousel-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: scroll-logos 30s linear infinite;
+  will-change: transform;
+}
+
+.logo-slide {
+  min-width: 250px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  isolation: isolate;
+}
+
+.partner-logo {
+  border-radius: 7px;
+  height: 120px !important;
+  width: auto;
+  object-fit: contain;
+  opacity: 1 !important;
+  mix-blend-mode: plus-lighter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  filter: brightness(0.7);
+  will-change: transform, filter;
+  transition: transform 0.3s ease, filter 0.3s ease;
+
+  transform: translateZ(0); /* Forces hardware acceleration */
+  backface-visibility: hidden;
+}
+
+.partner-logo:hover {
+  transform: scale(1.15) translateZ(0);
+  filter: brightness(1);
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==================================== */
+/* 4. Video Section */
+/* ==================================== */
+.Announce {
+  margin: 2rem 0;
+  color: rgba(238, 210, 49, 0.873);
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: clamp(1.2rem, 3vw, 1.8rem); /* Responsive size */
+  padding: 0 10px;
+}
+
+.video-section {
+  width: 100%;
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  display: block;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.video-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  width: 90%; /* Prevent hitting edges */
+  max-width: 600px;
+}
+
+.view-products-btn {
+  background-color: rgba(249, 219, 51, 0.873);
+  color: #121212;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+  max-width: 100%; /* Prevent button from exceeding screen width */
+}
+
+.view-products-btn:hover {
+  background-color: rgba(0, 0, 0, 0);
+  /* box-shadow: 0 0 20px rgba(249, 219, 51, 0.873); */
+  color: rgba(249, 219, 51, 0.873);
+  transform: scale(1.05);
+}
+
+.view-products-btn a {
+  font-family: "Lexend", sans-serif;
+  font-size: clamp(1.2rem, 4vw, 1.8rem); /* Responsive button text */
+  font-weight: 400;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+/* ==================================== */
+/* 5. Footer & Notifications */
+/* ==================================== */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background-color: #1c1c1c;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-logo {
+  font-family: "Science Gothic", sans-serif;
+  font-size: small;
+}
+
+.Toastify {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 9999;
+}
+
+/* ==================================== */
+/* 6. STRICT MOBILE OVERRIDES */
+/* ==================================== */
+
+/* Tablet & Mobile (Max Width 768px) */
+@media (max-width: 768px) {
+  .logout-btn {
+    font-size: 0.75rem;
+  }
+  .welcome-section {
+    padding: 30px 20px; /* Reduced side padding */
+  }
+
+  .logo-slide {
+    min-width: 180px; /* Shrink carousel items */
+    margin: 0 10px;
+  }
+}
+
+/* Small Mobile (Max Width 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 15px; /* Minimal padding */
+  }
+
+  .logo {
+    height: 40px; /* Smaller logo */
+  }
+
+  .logout-btn {
+    padding: 6px 12px;
+    font-size: 0.65rem;
+  }
+
+  /* Forcefully reduce padding to give text space */
+  .welcome-section {
+    padding: 20px 15px;
+  }
+
+  /* Justify text looks better on mobile paragraphs usually */
+  .buildup {
+    text-align: justify;
+    font-size: 1rem; /* Explicit legible size */
+  }
+
+  /* Carousel adjustments */
+  .logo-carousel-container {
+    height: 90px;
+  }
+  .partner-logo {
+    height: 90px !important;
+  }
+  .logo-slide {
+    min-width: 130px;
+  }
+
+  /* Video Section */
+  .video-section {
+    height: 50vh;
+    min-height: 300px;
+  }
+
+  .view-products-btn {
+    padding: 10px 0; /* Less horizontal padding */
+    width: 100%; /* Full width button */
+    display: flex;
+    justify-content: center;
+  }
+  .view-products-btn a {
+    font-size: 0.8rem;
+  }
+  Motivation {
+    height: 40vh;
+  }
+}
+@media (max-width: 400px) {
+  .buildup {
+    font-size: 0.8rem;
+  }
+  .logout-btn {
+    font-size: 0.4rem;
+  }
+  .footer {
+    font-size: small;
+  }
+  .footer-logo{
+    font-size: smaller;
+  }
+}
