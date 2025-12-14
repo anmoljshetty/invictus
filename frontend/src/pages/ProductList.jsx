@@ -10,7 +10,7 @@ function ProductList() {
     const navigate = useNavigate();
     
     // BACKEND ENDPOINT: Using the configured route
-    const url = 'http://localhost:8080/api/products'; 
+    const url = 'https://invictus-api.vercel.app/api/products'; 
 
     const fetchProducts = async () => {
         const token = localStorage.getItem('token'); 

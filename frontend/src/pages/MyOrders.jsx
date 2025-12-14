@@ -11,7 +11,7 @@ function MyOrders() {
     const token = localStorage.getItem('token');
     
     // BACKEND ENDPOINT
-    const url = 'http://localhost:8080/api/orders/my-orders'; 
+    const url = 'https://invictus-api.vercel.app/api/orders/my-orders'; 
 
     useEffect(() => {
         if (!token) {

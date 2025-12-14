@@ -30,7 +30,7 @@ function CheckoutPage() {
 
         const createIntent = async () => {
             try {
-                const url = 'http://localhost:8080/api/orders/create-payment-intent';
+                const url = 'https://invictus-api.vercel.app/api/orders/create-payment-intent';
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: {
