@@ -59,7 +59,7 @@ const PaymentForm = ({ clientSecret, orderDetails, token }) => {
 
     const finalizeOrder = async (paymentIntentId) => {
         try {
-            const url = 'http://localhost:8080/api/orders/complete-order';
+            const url = 'https://invictus-api.vercel.app/api/orders/complete-order';
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
